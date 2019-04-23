@@ -132,9 +132,9 @@
                 <div id="checklist" class="container tab-pane fade"><br>
                     <div class="row">
                         <h3>Your Checklist</h3> 
-                        <button type="button" class="btn btn-success btn-circle" data-toggle="modal" data-target="#listAddModal"><i class="fa fa-plus"></i>
+                        <button id="checklistAddButton" type="button" class="btn btn-success btn-circle hidden" data-toggle="modal" data-target="#listAddModal"><i class="fa fa-plus"></i>
                     </div><br>
-                    <div class="container-fluid checlist-wrapper" id="checklist-main">
+                    <div class="container-fluid checklist-wrapper" id="checklist-main">
                         
                     </div>
                 </div>
@@ -157,8 +157,8 @@
                     <div class="modal-body">
                         <fieldset>
                             <div class="form-group">
-                                <label for="username">To Do:</label>
-                                <input type="username" class="form-control" id="username" required>
+                                <label for="listAddItem">To Do:</label>
+                                <input type="text" class="form-control" id="listAddItem" required>
                             </div>
                             <!-- 
                                 cba to implement any of this 
@@ -176,7 +176,7 @@
                             </div>
                             -->
 
-                            <button onclick="addItemToList()" class="btn btn-primary">Add</button>
+                            <button onclick="addItemToList()" class="btn btn-primary" data-dismiss="modal">Add</button>
                         </fieldset>
                     </div>
                 

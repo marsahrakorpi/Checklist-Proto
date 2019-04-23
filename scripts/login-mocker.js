@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }, false);
 
 function login() {
-    //since there is no login just "register the user", ie set the cookie as whatever name was just entered
+    //since there is no login just "register the user"
     //lists are stored in ls by name because this sucks
     user = document.getElementById('username').value
     localStorage.setItem('proto_loggedInUser', user)

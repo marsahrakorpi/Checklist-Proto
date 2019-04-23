@@ -16,8 +16,31 @@
     line-height: 1.42857;
 }
 
+#checklist {
 
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+      
+}
+#checklist td, #checklist th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+#checklist th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+.checklist-wrapper{
 
+    text-align: left;
+}
+.checklist-wrapper ul{
+    list-style: none;
+}
 #whiteboard *{
     margin:0;
     user-select: none;
@@ -40,3 +63,61 @@
 .top-nav-row{
     padding-top: 6px;
 }
+
+/* Set all odd list items to a different color (zebra-stripes) */
+.checklist-wrapper ul li:nth-child(odd) {
+    background: #f9f9f9;
+  }
+
+/* Darker background-color on hover */
+.checklist-wrapper ul li:hover {
+background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+.checklist-wrapper ul li.completed {
+background: #888;
+color: #fff;
+text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+.checklist-wrapper ul li.completed::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+  }
+
+  /* Include the padding and border in an element's total width and height */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Remove margins and padding from the list */
+  .checklist-wrapper ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style the list items */
+  .checklist-wrapper ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+  
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
