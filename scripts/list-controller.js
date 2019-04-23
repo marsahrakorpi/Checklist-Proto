@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let userList = JSON.parse(localStorage.getItem(user+"_list"))
-    loadUserList(userList);
+    updateUserList(userList);
 }, false);
 
 //lists:::
@@ -20,7 +20,7 @@ Key: username + _list   (if username = john, then key = john_list)
 Value: [{"title" : String, "completed" : Boolean}]
 
 */
-function loadUserList(userList){
+function updateUserList(userList){
 
     let checkList = document.getElementById('checklist-main');
     checkList.innerHTML = "";
@@ -31,6 +31,7 @@ function loadUserList(userList){
 
     if(userList){
         userList.forEach((item) => {
+
             html+="<li onclick='toggleCompletion("+JSON.stringify(item)+")'"
 
             if(item.completed) {
@@ -38,7 +39,7 @@ function loadUserList(userList){
             } 
 
             html += ">"+item.title
-
+            html += "<span class='close' onclick=removeItemFromList("+JSON.stringify(item)+")> x</span>"
             html+="</li>"
         }) 
     } else {
@@ -65,19 +66,32 @@ function addItemToList(){
     if(userList === null || typeof(userlist) === undefined){
         userList = [];
     }
+
     let task = {"title":item, "completed":false};
     
     if (userList.some(item => item.title === task.title)){
         return alert("Task with this name already exists, please choose another");
     }
-    console.log(userList);
+
     userList.push(task);
 
     localStorage.setItem(user+"_list", JSON.stringify(userList));
     //empty the input after submitting
     document.getElementById('listAddItem').value = "";
 
-    loadUserList(userList);
+    updateUserList(userList);
+}
+
+function removeItemFromList(item) {
+    let userList = JSON.parse(localStorage.getItem(user+"_list"))
+
+    userList = userList.filter(obj => {
+        return obj.title !== item.title
+    })
+
+    localStorage.setItem(user+"_list", JSON.stringify(userList));
+
+    updateUserList(userList);
 }
 
 function toggleCompletion(item) {
@@ -93,5 +107,5 @@ function toggleCompletion(item) {
 
     localStorage.setItem(user+"_list", JSON.stringify(userList));
 
-    loadUserList(userList);
+    updateUserList(userList);
 }
