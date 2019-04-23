@@ -1,15 +1,17 @@
-userLoggedIn = false;
-
+authenticated = false;
+user = ""
 document.addEventListener('DOMContentLoaded', () => { 
-    let user = localStorage.getItem('proto_loggedInUser');
+    user = localStorage.getItem('proto_loggedInUser');
     if(user === "" || user === null || typeof(user) === undefined) {
-        this.userLoggedIn = false;
+        localStorage.setItem("undefined_list", null);
+        this.authenticated = false;
+        user = "undefined"
     } else {
-        this.userLoggedIn = true;
+        this.authenticated = true;
     }
 
     let userList = JSON.parse(localStorage.getItem(user+"_list"))
-    loadUserList(user, userList);
+    loadUserList(userList);
 }, false);
 
 //lists:::
@@ -18,17 +20,12 @@ Key: username + _list   (if username = john, then key = john_list)
 Value: [{"title" : String, "completed" : Boolean}]
 
 */
-function loadUserList(user, userList){
+function loadUserList(userList){
+
     let checkList = document.getElementById('checklist-main');
     checkList.innerHTML = "";
-    if(!userLoggedIn) {
-        document.getElementById('checklistAddButton').classList.add('hidden');
-        checkList.innerHTML = "<h4>Please log in to access your checklist</h4>"
-        return;
-    }
 
     document.getElementById('checklistAddButton').classList.remove('hidden');
-
 
     let html = "<ul id='checkList'>"
 
@@ -62,7 +59,7 @@ function addItemToList(){
     if(item === "" || item === null) {
         return;
     }
-    let user = localStorage.getItem('proto_loggedInUser');
+
     let userList = JSON.parse(localStorage.getItem(user+"_list"))
 
     if(userList === null || typeof(userlist) === undefined){
@@ -80,20 +77,21 @@ function addItemToList(){
     //empty the input after submitting
     document.getElementById('listAddItem').value = "";
 
-    loadUserList(user, userList);
+    loadUserList(userList);
 }
 
 function toggleCompletion(item) {
     item.completed = !item.completed
 
-    let user = localStorage.getItem('proto_loggedInUser');
     let userList = JSON.parse(localStorage.getItem(user+"_list"))
+
     userList.map((a) => {
         if(a.title === item.title){
             return a.completed = item.completed
         }
     });
-    //console.log(userList); return;
+
     localStorage.setItem(user+"_list", JSON.stringify(userList));
-    loadUserList(user, userList);
+
+    loadUserList(userList);
 }
