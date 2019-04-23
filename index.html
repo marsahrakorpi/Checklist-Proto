@@ -6,7 +6,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="styles/main.css">
         <script src="scripts/list-controller.js"></script>
         <script src="scripts/login-mocker.js"></script>
@@ -36,7 +36,7 @@
                     </div>
                 <div class="col-xl-2">
                     <button class="btn btn-success hidden" id="saveChecklistbutton">Save Checklist</button> 
-                    <button class="btn btn btn-info " id="loginButton" data-toggle="modal" data-target="#myModal">Sign in/Sign up</button> 
+                    <button class="btn btn btn-info " id="loginButton" data-toggle="modal" data-target="#loginModal">Login / Register</button> 
                     <button class="btn btn-success hidden" id="logoutButton" onclick="logout()">Log out</button> 
                     <!--save checklist button is added in main.js-->
                     <!--login button logic is handled in login-mocker.js-->
@@ -45,13 +45,13 @@
             </div>
                 
             <!--Login/register Modal-->
-            <div class="modal" id="myModal">
+            <div class="modal" id="loginModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                 
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title">Login</h4>
+                        <h4 class="modal-title">Login Or Register this does the same thing this is a proto just write a name</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                 
@@ -132,7 +132,7 @@
                 <div id="checklist" class="container tab-pane fade"><br>
                     <div class="row">
                         <h3>Your Checklist</h3> 
-                        <button type="button" class="btn btn-success btn-circle"><i class="fa fa-plus-circle"></i>
+                        <button type="button" class="btn btn-success btn-circle" data-toggle="modal" data-target="#listAddModal"><i class="fa fa-plus"></i>
                     </div><br>
                     <div class="container-fluid checlist-wrapper" id="checklist-main">
                         
@@ -142,6 +142,53 @@
 
         </div>
 
+        <!--New checklist item Modal-->
+        <div class="modal" id="listAddModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">New checklist item</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="username">To Do:</label>
+                                <input type="username" class="form-control" id="username" required>
+                            </div>
+                            <!-- 
+                                cba to implement any of this 
+
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox"> Remember me
+                                </label>
+                            </div>
+                            -->
+
+                            <button onclick="addItemToList()" class="btn btn-primary">Add</button>
+                        </fieldset>
+                    </div>
+                
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                
+                    </div>
+                </div>
+            </div>
+            
 
     </body>
 
