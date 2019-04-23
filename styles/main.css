@@ -1,0 +1,42 @@
+.inline{
+    display: inline;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+
+
+#whiteboard *{
+    margin:0;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    font-family: Georgia, sans-serif;
+ }
+ canvas{
+    cursor: crosshair;
+    border:black solid 1px;
+ 
+ }
+ #clr div{
+    cursor:pointer;
+    width:20px;
+    height:20px;
+    float:left;
+ }
+ 
+.top-nav-row{
+    padding-top: 6px;
+}

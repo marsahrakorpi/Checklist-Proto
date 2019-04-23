@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles/main.css">
+        <script src="scripts/list-controller.js"></script>
+        <script src="scripts/login-mocker.js"></script>
+        <script src="scripts/canvas.js"></script>
+
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row top-nav-row">
+                <div class="col-sm-1">
+                    <h3>Logo</h3>
+                </div>
+                <div class="col-sm-9">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills">
+                            <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#whiteboard">Whiteboard</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#checklist" >Checklist</a>
+                            </li>
+                        </ul>
+                    </div>
+                <div class="col-xl-2">
+                    <button class="btn btn-success hidden" id="saveChecklistbutton">Save Checklist</button> 
+                    <button class="btn btn btn-info " id="loginButton" data-toggle="modal" data-target="#myModal">Sign in/Sign up</button> 
+                    <button class="btn btn-success hidden" id="logoutButton" onclick="logout()">Log out</button> 
+                    <!--save checklist button is added in main.js-->
+                    <!--login button logic is handled in login-mocker.js-->
+                </div>
+
+            </div>
+                
+            <!--Login/register Modal-->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Login</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="username" class="form-control" id="username" required>
+                            </div>
+                            <!-- 
+                                cba to implement any of this 
+
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox"> Remember me
+                                </label>
+                            </div>
+                            -->
+
+                            <button onclick="login()" class="btn btn-primary">Submit</button>
+                        </fieldset>
+                    </div>
+                
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div id="home" class="container tab-pane active"><br>
+                    <h3>HOME</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+
+                <div id="whiteboard" class="container tab-pane fade"><br>
+                    <!-- https://codepen.io/eagj/pen/wavwGR -->
+                    <canvas id="can" width="500" height="300">
+                        </canvas>
+                        <div id="clr">
+                          <div style="background-color:black;"></div>
+                          <div style="background-color:red;"></div>
+                          <div style="background-color:green;"></div>
+                          <div style="background-color:orange;"></div>
+                          <div style="background-color:#FFFF00;"></div>
+                          <div style="background-color:#F43059;"></div>
+                          <div style="background-color:#ff00ff;"></div>
+                          <div style="background-color:#9ecc3b;"></div>
+                          <div style="background-color:#fbd;"></div>
+                          <div style="background-color:#fff460;"></div>
+                          <div style="background-color:#F43059;"></div>
+                          <div style="background-color:#82B82C;"></div>
+                          <div style="background-color:#0099FF;"></div>
+                          <div style="background-color:#ff00ff;"></div>
+                          <div style="background-color:rgb(128,0,255);"></div>
+                          <div style="background-color:rgb(255,128,0);"></div>
+                          <div style="background-color:rgb(153,254,0);"></div>
+                          <div style="background-color:rgb(18,0,255);"></div>
+                          <div style="background-color:rgb(255,28,0);"></div>
+                          <div style="background-color:rgb(13,54,0);"></div>
+                        </div>
+                        <a id="clear" href="#">Clear</a>
+
+                        
+                </div>
+                <div id="checklist" class="container tab-pane fade"><br>
+                    <div class="row">
+                        <h3>Your Checklist</h3> 
+                        <button type="button" class="btn btn-success btn-circle"><i class="fa fa-plus-circle"></i>
+                    </div><br>
+                    <div class="container-fluid checlist-wrapper" id="checklist-main">
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </body>
+
+
+    
+
+</html>
